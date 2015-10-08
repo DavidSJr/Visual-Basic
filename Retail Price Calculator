@@ -1,0 +1,40 @@
+Public Class Form1
+
+    Private Sub btnGet_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGet.Click
+        'Value to be converted to decimal
+        Dim decCost As Decimal
+        Dim decMarkup As Decimal
+
+        Try
+            decCost = CDec(txtCost.Text)
+            decMarkup = CDec(txtMarkup.Text)
+
+            If decCost >= 0 And decMarkup >= 0 Then
+                lblRetailPrice.Text = calculateretail(decCost, decMarkup).ToString("c") 'Outputs the retail price in currency form
+            Else
+                MessageBox.Show("Check your data", "Error")
+                txtCost.Clear()
+                txtMarkup.Clear()
+                txtCost.Focus()
+            End If
+        Catch
+            'Message Box appears if incorrect input is entered
+            MessageBox.Show("Please enter numeral.")
+        End Try
+
+    End Sub
+    Function calculateretail(ByVal decCost As Decimal, ByVal decMarkup As Decimal) As Decimal
+        'Shows formula to calculate the Retail Price
+        calculateretail = decCost * (decMarkup / 100) + decCost
+        Return calculateretail
+    End Function
+
+    Private Sub btnExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExit.Click
+        'Close the program
+        Me.Close()
+    End Sub
+
+    Private Sub txtCost_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCost.TextChanged
+
+    End Sub
+End Class
