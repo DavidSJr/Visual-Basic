@@ -1,0 +1,98 @@
+Public Class Form1
+    'Workshop, location, costs, days, fees, and total values
+    Const intThree As Integer = 3, intFive As Integer = 5, intOne As Integer = 1
+    Const decAustin As Decimal = 95, decChicago As Decimal = 125, decDallas As Decimal = 110, decOrlando As Decimal = 100, decPhoenix As Decimal = 92, decRaleigh As Decimal = 90
+    Const decStress As Decimal = 595, decTime As Decimal = 695, decSkills As Decimal = 995, decNegotiation As Decimal = 1295, decInterview As Decimal = 395
+    Dim decTotalCost As Decimal
+    Dim decCosts As Decimal
+
+    Private Sub GroupBox3_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupBox3.Enter
+
+    End Sub
+
+    Private Sub ListBox2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    End Sub
+
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        'Closes the program
+        Me.Close()
+
+    End Sub
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        'Resets all list boxes and radio buttons
+        lstCosts.Items.Clear()
+        lblTotalCost.Text = String.Empty
+        radAustin.Checked = False
+        radChicago.Checked = False
+        radDallas.Checked = False
+        radOrlando.Checked = False
+        radPhoenix.Checked = False
+        radRaleigh.Checked = False
+        radStress.Checked = False
+        radTimeMgt.Checked = False
+        radSuperSkills.Checked = False
+        radNegot.Checked = False
+        radInterview.Checked = False
+
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+      
+
+        'What each Workshop is worth when selected by the user
+        If radStress.Checked = True Then
+            decCosts = decStress
+        ElseIf radTimeMgt.Checked = True Then
+            decCosts = decTime
+        ElseIf radSuperSkills.Checked = True Then
+            decCosts = decSkills
+        ElseIf radNegot.Checked = True Then
+            decCosts = decNegotiation
+        ElseIf radInterview.Checked = True Then
+            decCosts = decInterview
+        Else
+            MessageBox.Show("Choose a workshop!", "Error") 'Error box if no workshop is selected
+        End If
+
+        'What each Location is worth when selected by the user
+        If radAustin.Checked = True Then
+            decCosts += (decAustin * intThree)
+        ElseIf radChicago.Checked = True Then
+            decCosts += (decChicago * intThree)
+        ElseIf radDallas.Checked = True Then
+            decCosts += (decDallas * intThree)
+        ElseIf radOrlando.Checked = True Then
+            decCosts += (decOrlando * intThree)
+        ElseIf radPhoenix.Checked = True Then
+            decCosts += (decPhoenix * intThree)
+        ElseIf radRaleigh.Checked = True Then
+            decCosts += (decRaleigh * intThree)
+        Else
+            MessageBox.Show("Choose a Location!", "Error") 'Error message if no location is selected
+        End If
+
+
+
+
+        'Displays the cost in the blank listbox
+        lstCosts.Items.Add(decCosts.ToString("c"))
+        decTotalCost += decCosts
+        
+        
+        
+
+
+    End Sub
+
+    Private Sub btnCalculate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCalculate.Click
+
+    End Sub
+    
+    Private Sub lstWorkshop_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+
+    End Sub
+End Class
